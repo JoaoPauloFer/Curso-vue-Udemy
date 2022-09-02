@@ -5,11 +5,11 @@
     <title>teste de class binding</title>
 
     <style>
-        .colorRed {
+        .color-red {
             color: red;
         }
 
-        .colorBlue {
+        .color-blue {
             color: blue;
         }
 
@@ -29,7 +29,9 @@
 
         <h1 :class="className" >Olá class binding</h1>
 
-        <h1 :class="{'is-loading' : isLoading}" @click="toggleClass" >Olá class binding {'className' : isLoading} </h1>
+        <h1 :class="{'is-loading' : isLoading, 'color-blue': isBlue}" @click="toggleClass" >Olá class binding {'className' : isLoading} </h1>
+
+        <h1 :class="classObject" >Olá class binding classObject</h1>
 
     </div>
 
@@ -41,15 +43,26 @@
         el: '#root',
         data:{
             titulo: "Agora o título modificado pelo javascript vue",
-            className: 'colorRed',
-            isLoading: false
+
+            className: 'color-blue',
+            isLoading: false,
+            isBlue: true
+        },
+        computed: {
+            classObject: function() {
+                return {
+                    'is-loading': true,
+                    'color-blue': this.isBlue
+                }
+            }
         },
         methods: {
             toggleClass() {
-                this.isLoading = !this.isLoading
+                this.isLoading = !this.isLoading;
+                this.isBlue = !this.isBlue;
             }
         }
-    })
+    });
 </script>
 
 </body>
