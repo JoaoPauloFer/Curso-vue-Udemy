@@ -2,43 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>teste de class binding</title>
 
-<style type="text/css">
-</style>
+    <style>
+        .color-red {
+            color: red;
+        }
+
+        .color-blue {
+            color: blue;
+        }
+
+        .is-loading {
+            background: red;
+        }
+
+        .back-green {
+            background: green;
+        }
+
+    </style>
 
 </head>
-
 <body>
     
     <div id="root">
+        <button title="Título do botão" >Passe o mouse sobre o botão</button>
+        <button title="titulo" >Passe o mouse sobre o botão</button>
+        <button v-bind:title="titulo" >Passe o mouse sobre o botão</button>
+        <button :title="titulo" >Passe o mouse sobre o botão</button>
 
-        {{ mensagem }}
+        <h1 :class="className" >Olá class binding</h1>
 
-        <div v-once>{{ mensagem }}</div>
+        <h1 :class="{'is-loading' : isLoading, 'color-blue': isBlue}" @click="toggleClass" >Olá class binding {'className' : isLoading} </h1>
 
-        <div v-html="conteudoEmHtml"></div>
-        <div v-text="conteudoEmHtml"></div>
+        <h1 :class="classObject" >Olá class binding classObject</h1>
 
-        <div v-bind:id="dynamicId">Div dinamico</div>
-        <button v-bind:disabled="expressaoBoleana">Button</button>
+        <h1 :class="[ className, classBackgroundGreen ]">Olá class binding class com array </h1>
+
+        <h1 :style="{color: azul, fontSize: 20 + 'px'}" >Olá style binding</h1>
+
+        <h1 :style="styleObject" >Olá style</h1>
+
     </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
 
 <script>
     var app = new Vue({
         el: '#root',
         data:{
-            mensagem: "Oláaaaaaaaaaa!",
-            conteudoEmHtml: "<b> Olha o negrito aqui </b>",
-            dynamicId: "divDinamico",
-            expressaoBoleana: true
+            titulo: "Agora o título modificado pelo javascript vue",
 
+            className: 'color-blue',
+            classBackgroundGreen: 'back-green',
+            isLoading: false,
+            isBlue: true,
+
+            azul: 'blue',
+
+            styleObject: {
+                color: 'green',
+                fontSize: '13px'
+            }
         },
-        computed: {},
-        
-        methods: {}
+        computed: {
+            classObject: function() {
+                return {
+                    'is-loading': true,
+                    'color-blue': this.isBlue
+                }
+            }
+        },
+        methods: {
+            toggleClass() {
+                this.isLoading = !this.isLoading;
+                this.isBlue = !this.isBlue;
+            }
+        }
     });
 </script>
 
