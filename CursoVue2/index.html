@@ -1,31 +1,48 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
     <title></title>
     <style type="text/css">
     </style>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 
 <body>
- 
+<!--
+http://bulma.io/
+https://cdnjs.com/libraries/bulma
+-->
+
+<div id="root" class="container">
+
+    
+    <message></message>
+    <!-- <message title="Olá componente VueJS" body="Lorem ipsum dolar sit amet."></message>
+    <message title="Olá Meu componente de mensagem" body="Lorem ipsum dolar sit amet."></message>
 
 
-<div id="root">
+    <article class="message">
+        <div class="message-header">
+            <p>Olá mundo, Código refinado!</p>
+            <button class="delete"></button>
+        </div>
+        <div class="message-body">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis
+            placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum
+            <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
+            sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem
+            eget, facilisis sodales sem.
+        </div>
+    </article> -->
 
-    <tarefa>Ir para o banco</tarefa>
-    <tarefa>Ir para a academia</tarefa>
-    <tarefa>Ir para o trabalho</tarefa>
-
-    <hr/>
-
-    <lista-tarefas></lista-tarefas>
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
 
 <script src="main.js"></script>
 
-</body> 
+</body>
 </html>
