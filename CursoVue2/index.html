@@ -6,6 +6,7 @@
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 
 <body>
@@ -14,10 +15,21 @@ http://bulma.io/
 https://cdnjs.com/libraries/bulma
 -->
 
-
 <div id="root" class="container">
-    <button @click="showModal = true">Mostrar modal</button>
-    <modal v-show="showModal" @meuclickfechar="showModal= false">Algo bem aqui :) texto maior</modal>
+    <button @click="showModal = true"> Mostrar Modal</button>
+
+
+    <modal v-show="showModal" @meuclickfechar="showModal = false">
+
+        <template slot="header">Título definido pelo slot </template>
+        Algo bem aqui :) texto maior
+
+        <template slot="footer">
+            <a class="button is-success">Salvar alterações</a>
+        </template>
+
+    </modal>
+
 </div>
 
 
