@@ -1,42 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title></title>
-    <style type="text/css">
-    </style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-</head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.css">
 
+</head>
 <body>
-<!--
-http://bulma.io/
-https://cdnjs.com/libraries/bulma
--->
 
 <div id="root" class="container">
-    <button @click="showModal = true"> Mostrar Modal</button>
+
+    <tabs>
+
+        <tab name="Sobre nós" >
+            <h1>Conteúdo do sobre nós</h1>
+        </tab>
 
 
-    <modal v-show="showModal" @meuclickfechar="showModal = false">
+        <tab name="Nossa cultura"  :selected="true">
+            <h1>Conteúdo da nossa cultura</h1>
+        </tab>
 
-        <template slot="header">Título definido pelo slot </template>
-        Algo bem aqui :) texto maior
+        <tab name="Nossa visão">
+            <h1>Conteúdo do sobre nós</h1>
+        </tab>
 
-        <template slot="footer">
-            <a class="button is-success">Salvar alterações</a>
-        </template>
+        <tab name="Contato">
+            <h1>Código refinado entre em contato pelo
+                <a href="http://medium.com/codigorefinado">Código refinado</a>
+            </h1>
+        </tab>
+    </tabs>
 
-    </modal>
 
 </div>
 
-
-<!--<script src="https://unpkg.com/vue"></script>-->
-<!--<script src="https://unpkg.com/vue@2.2.6"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.0/vue.js"></script>
-
+<script src="https://unpkg.com/vue@2.1.3/dist/vue.js"></script>
 <script src="main.js"></script>
 
 </body>

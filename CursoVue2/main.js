@@ -1,39 +1,68 @@
-Vue.component('modal', {
-  template: `
-        <div class="modal is-active">
-          <div class="modal-background"></div>
-          <div class="modal-card">
-          
-          
-            <header class="modal-card-head">
-              <p class="modal-card-title">
-                <slot name="header"></slot>
-               </p>
-              
-              <button class="delete" @click="$emit('meuclickfechar')"></button>
-              
-            </header>
-            
-            
-            <section class="modal-card-body">
-              <slot>Se eu escreve algo na tag slot padrão</slot>
-            </section>
-            
-            <footer class="modal-card-foot">
-              
-              <slot name="footer"> <b>Footer</b> </slot>
+Vue.component('tabs', {
 
-            </footer>
-          </div>
-        </div>
-    `
+  template: `
+
+   <div>
+    <div class="tabs">
+      <ul>
+      
+        <li v-for="tab in tabs" :class="{'is-active': tab.isActive}"> 
+         <a href="#" @click="selectTab(tab)">{{ tab.name}}</a> 
+        </li>
+        
+      </ul>
+    </div>
+    
+    <div class="tabs-detail">
+      <slot></slot>
+    </div>
+    
+  </div>
+  `,
+
+  data() {
+    return {
+      tabs: []
+    };
+  },
+
+  created() {
+    this.tabs = this.$children;
+  },
+
+  methods: {
+    selectTab(selectedTab) {
+      this.tabs.forEach(tab => {
+        tab.isActive = (tab.name == selectedTab.name);
+      });
+    }
+  }
 
 });
 
+Vue.component('tab', {
+
+  props: {
+    name: {required: true},
+    selected: {default: false}
+  },
+
+  data(){
+    return {
+       isActive:  false
+    };
+  },
+
+  mounted() {
+    this.isActive = this.selected;
+  },
+
+  template: `
+    <div v-show="isActive"><slot></slot></div>
+  `
+
+});
 
 new Vue({
-  el: '#root',
-  data: {
-    showModal: false
-  }
+  el: '#root'
 });
